@@ -1,0 +1,116 @@
+html {
+    font-size: 1vw;
+    background-color: #000;
+}
+.runakoBirthday {
+    .scrollArea {
+        position: relative;
+        .container {
+            height: 100vh;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .containerInner {
+                position: relative;
+                width: 100%;
+                max-width: calc(1320 / 760 * 100vh);
+                &::before {
+                    content: "";
+                    display: block;
+                    padding-top: calc(760 / 1320 * 100%);
+                }
+                .targetCanvas,
+                .animationArea {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                }
+            }
+            .shadow {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                // box-shadow:0 0 5rem 0 #ffb787d8 inset;
+            }
+        }
+    }
+}
+
+#animationArea-1 {
+    text-align: center;
+    .message1,
+    .message2 {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    .text1,
+    .text2,
+    .date {
+        opacity: 0;
+        color: #ff8c00;
+        background: -webkit-linear-gradient(
+            0deg,
+            #40e0d0,
+            #ff8c00,
+            #ff0080,
+            #40e0d0
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400% 100%;
+        background-position-x: 0%;
+    }
+    .text1,
+    .text2 {
+        font-size: 5rem;
+        letter-spacing: 0.5rem;
+        will-change: opacity, transform, background-position-x;
+        @include sp-layout {
+            font-size: 7.5rem;
+        }
+    }
+    .date {
+        letter-spacing: 2rem;
+        font-size: 10rem;
+        will-change: opacity, transform, letter-spacing, background-position-x;
+        @include sp-layout {
+            font-size: 15rem;
+        }
+    }
+    .credit {
+        position: absolute;
+        width: 100%;
+        bottom: 1.2rem;
+        color: #ccc;
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: opacity ease-out 0.5s;
+        will-change: opacity;
+        @include sp-layout {
+            font-size: 3rem;
+        }
+        .github {
+            width: 3rem;
+            height: 3rem;
+            fill: #ccc;
+            @include sp-layout {
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+    }
+    .fadeIn {
+        opacity: 1;
+        transition: opacity ease-in 0.5s;
+    }
+}
