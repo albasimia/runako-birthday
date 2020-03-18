@@ -5,8 +5,28 @@ prepend config-block
 
 //- append stylesheet-block
 
-//- append javascript-block
+append javascript-block
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+  script(src="js/scrollanime.js")
 
 block content-block
-  .sample-icon
-  | hello, world!
+  section.runakoBirthday
+    #scrollArea-1.scrollArea
+      .container
+        .containerInner
+          canvas#targetCanvas-1.targetCanvas
+          #animationArea-1.animationArea
+            .arrow
+            .message1
+              div
+                p.text1 HAPPY BIRTHDAY !!!
+                p.text2 RUNAKO SAN !!!
+            .message2
+              p.date 2020,3,18
+            .credit
+              //- TODO: リンク差し替え
+              a(href="https://github.com/albasimia/", target="_blank", rel="noopener noreferrer")
+                  svg.github
+                    use(xlink:href="img/github.svg#github")
+              p direction and program : albasimia
+              p video and glasses : raiko
