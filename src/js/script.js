@@ -6,7 +6,7 @@ const ScrollAnimes = [];
 
 ScrollAnimes.push(new ScrollAnime({
     imgBasePath: "img/glasses/",
-    totalFrameNumber: 85,
+    totalFrameNumber: 84,
     priorityFrames: [0, 46, 68],
     targetCanvasId: 'targetCanvas-1',
     targetScrollArea: 'scrollArea-1',
