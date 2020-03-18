@@ -1,0 +1,187 @@
+@import url(https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap);/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+@-webkit-keyframes hop {
+  from {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  to {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); } }
+@keyframes hop {
+  from {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  to {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); } }
+
+body {
+  -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%; }
+
+.wrapper {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 16px;
+  line-height: 1.5; }
+
+html {
+  font-size: 1vw;
+  background-color: #000; }
+
+.runakoBirthday .scrollArea {
+  position: relative; }
+  .runakoBirthday .scrollArea .container {
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .runakoBirthday .scrollArea .container .containerInner {
+      position: relative;
+      width: 80%;
+      max-width: calc(1320 / 990 * 100vh); }
+      .runakoBirthday .scrollArea .container .containerInner::before {
+        content: "";
+        display: block;
+        padding-top: calc(990 / 1320 * 100%); }
+      .runakoBirthday .scrollArea .container .containerInner .targetCanvas,
+      .runakoBirthday .scrollArea .container .containerInner .animationArea {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; }
+    .runakoBirthday .scrollArea .container .shadow {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%; }
+
+#animationArea-1 {
+  text-align: center; }
+  #animationArea-1 .message1,
+  #animationArea-1 .message2 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+  #animationArea-1 .text1,
+  #animationArea-1 .text2,
+  #animationArea-1 .date {
+    opacity: 0;
+    color: #ff8c00;
+    background: -webkit-linear-gradient(0deg, #40e0d0, #ff8c00, #ff0080, #40e0d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400% 100%;
+    background-position-x: 0%; }
+  #animationArea-1 .arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    width: 2rem;
+    height: 2rem;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    -webkit-animation: hop .5s ease-out infinite alternate;
+            animation: hop .5s ease-out infinite alternate; }
+    #animationArea-1 .arrow::before, #animationArea-1 .arrow::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-right: 2px solid #ccc;
+      border-bottom: 2px solid #ccc;
+      box-sizing: border-box;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
+    #animationArea-1 .arrow::before {
+      top: -1rem; }
+  #animationArea-1 .text1,
+  #animationArea-1 .text2 {
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+    will-change: opacity, transform, background-position-x; }
+  #animationArea-1 .date {
+    letter-spacing: 2rem;
+    font-size: 10rem;
+    will-change: opacity, transform, letter-spacing, background-position-x; }
+  #animationArea-1 .credit {
+    position: absolute;
+    width: 100%;
+    bottom: 1.2rem;
+    color: #ccc;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity ease-out 0.5s;
+    will-change: opacity; }
+    #animationArea-1 .credit .github {
+      width: 3rem;
+      height: 3rem;
+      fill: #ccc; }
+  #animationArea-1 .fadeIn {
+    opacity: 1;
+    transition: opacity ease-in 0.5s; }
+  #animationArea-1 .fadeOut {
+    opacity: 0;
+    transition: opacity ease-out 0.3s; }
+  @media (max-width: 768px) {
+      #animationArea-1 .text1,
+      #animationArea-1 .text2 {
+        font-size: 7.5rem; }
+      #animationArea-1 .date {
+        font-size: 15rem; }
+      #animationArea-1 .credit {
+        font-size: 3rem; }
+        #animationArea-1 .credit .github {
+          width: 5rem;
+          height: 5rem; } }

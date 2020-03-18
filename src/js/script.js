@@ -1,32 +1,29 @@
 import {
     BASE_DIR
 } from '../constants.yml'
-// import Sample from '@/lib/Sample';
-
-
-
-// document.querySelector('.wrapper').addEventListener('click', () => {
-//     console.log(`hello, ${sample.name}. Base directory is ${BASE_DIR}.`);
-// });
 
 const ScrollAnimes = [];
 
 ScrollAnimes.push(new ScrollAnime({
-    // imgBasePath: "img/07-flip-reveal-guts/",
-    imgBasePath: "img/01-hero-lightpass/",
-    // totalFrameNumber: 69,
-    totalFrameNumber: 145,
+    imgBasePath: "img/glasses/",
+    totalFrameNumber: 85,
     priorityFrames: [0, 46, 68],
     targetCanvasId: 'targetCanvas-1',
     targetScrollArea: 'scrollArea-1',
     imageWidth: 1320,
-    imageHeight: 760,
-    pixelsPerFrame: 10,
+    imageHeight: 990,
+    pixelsPerFrame: 15,
     isAutoResizeScrollArea: true,
     offsetEndPos: $(window).height() * -1,
-    keyFrames: [{
+    keyFrames: [
+        {
+            emit: 3,
+            callback: function (isReverse) {
+                $('#animationArea-1 .arrow').addClass('fadeOut');
+            }
+        },{
             start: 0,
-            end: 145,
+            end: 85,
             callback: function (progress) {
                 $('#animationArea-1 .text1').css({
                     backgroundPositionX: progress * 300 + '%'
@@ -39,8 +36,8 @@ ScrollAnimes.push(new ScrollAnime({
                 });
             }
         }, {
-            start: 0,
-            end: 30,
+            start: 20,
+            end: 25,
             callback: function (progress) {
                 $('#animationArea-1 .text1').css({
                     opacity: progress,
@@ -49,8 +46,8 @@ ScrollAnimes.push(new ScrollAnime({
             }
         },
         {
-            start: 30,
-            end: 60,
+            start: 35,
+            end: 40,
             callback: function (progress) {
                 $('#animationArea-1 .text2').css({
                     opacity: progress,
@@ -59,8 +56,8 @@ ScrollAnimes.push(new ScrollAnime({
             }
         },
         {
-            start: 90,
-            end: 100,
+            start: 50,
+            end: 60,
             callback: function (progress) {
                 $('#animationArea-1 .text1, #animationArea-1 .text2').css({
                     opacity: 1 - progress,
@@ -69,8 +66,8 @@ ScrollAnimes.push(new ScrollAnime({
             }
         },
         {
-            start: 100,
-            end: 120,
+            start: 60,
+            end: 67,
             callback: function (progress) {
                 $('#animationArea-1 .date').css({
                     opacity: progress,
@@ -80,7 +77,17 @@ ScrollAnimes.push(new ScrollAnime({
             }
         },
         {
-            emit: 144,
+            start: 17,
+            end: 67,
+            callback: function (progress) {
+                $('#targetCanvas-1').css({
+                    // transform: `rotate(${progress * 720}deg)`
+                    transform: `rotate(${progress * 1080}deg)`
+                });
+            }
+        },
+        {
+            emit: 85,
             callback: function (isReverse) {
                 $('#animationArea-1 .credit').toggleClass('fadeIn');
             }

@@ -1,7 +1,7 @@
 extends /layout/_default-layout
 
 prepend config-block
-  - page_name = 'るなこさん 誕生日 特設サイト 2020'
+  - page_name = ''
 
 //- append stylesheet-block
 
@@ -16,6 +16,7 @@ block content-block
         .containerInner
           canvas#targetCanvas-1.targetCanvas
           #animationArea-1.animationArea
+            .arrow
             .message1
               div
                 p.text1 HAPPY BIRTHDAY !!!
@@ -28,5 +29,4 @@ block content-block
                   svg.github
                     use(xlink:href="img/github.svg#github")
               p direction and program : albasimia
-              p video : raiko
-        //- .shadow
+              p video and glasses : raiko

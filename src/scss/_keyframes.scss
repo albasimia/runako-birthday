@@ -1,0 +1,8 @@
+@keyframes hop {
+    from {
+        transform: translate(-50%, 0);
+    }
+    to {
+        transform: translate(-50%, -50%);
+    }
+}

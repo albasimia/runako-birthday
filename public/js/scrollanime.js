@@ -73,39 +73,42 @@
             let ticking = false;
             let beforIndex = 0;
             let isReverse = false;
+            let req;
             document.addEventListener('scroll', function () {
                 if (!ticking) {
-                    requestAnimationFrame(function () {
+                    req = requestAnimationFrame(function () {
                         ticking = false;
                         const top = Math.round($(window).scrollTop() - self.scrollArea.offset().top - self.offsetStartPos);
                         const index = Math.round(top / ((self.scrollArea.height() - self.offsetStartPos + self.offsetEndPos) / self.totalFrameNumber));
                         isReverse = index < beforIndex ? true : false;
                         for (let i = 0; i <= Math.abs(index - beforIndex); i++) {
-                            self.correntFrameNum = beforIndex + i * ((index - beforIndex) / Math.abs(index - beforIndex));
-                            if (0 <= top && self.correntFrameNum < self.totalFrameNumber && self.images[self.correntFrameNum]) {
-                                self.ctx.drawImage(self.images[self.correntFrameNum], 0, 0, self.cvs.width, self.cvs.height);
-                            } else if (self.correntFrameNum > self.totalFrameNumber) {
-                                self.ctx.drawImage(self.images[self.totalFrameNumber - 1], 0, 0, self.cvs.width, self.cvs.height);
-                                self.correntFrameNum = self.totalFrameNumber;
-                            } else if (self.correntFrameNum <= 0) {
-                                self.ctx.drawImage(self.images[0], 0, 0, self.cvs.width, self.cvs.height);
-                                self.correntFrameNum = 0;
-                            }
-
-                            // keyFrameの処理
-                            for (let i = 0; i < self.keyFrames.length; i++) {
-                                if (self.keyFrames[i].start != null) {
-                                    if (self.keyFrames[i].start <= self.correntFrameNum && self.correntFrameNum <= self.keyFrames[i].end) {
-                                        self.keyFrames[i].callback(self.getProgress(self.keyFrames[i].start, self.keyFrames[i].end));
-                                    }
+                            if (index - beforIndex != 0) {
+                                self.correntFrameNum = beforIndex + i * ((index - beforIndex) / Math.abs(index - beforIndex));
+                                if (0 <= top && self.correntFrameNum < self.totalFrameNumber && self.images[self.correntFrameNum]) {
+                                    self.ctx.drawImage(self.images[self.correntFrameNum], 0, 0, self.cvs.width, self.cvs.height);
+                                } else if (self.correntFrameNum > self.totalFrameNumber) {
+                                    self.ctx.drawImage(self.images[self.totalFrameNumber - 1], 0, 0, self.cvs.width, self.cvs.height);
+                                    self.correntFrameNum = self.totalFrameNumber;
+                                } else if (self.correntFrameNum <= 0) {
+                                    self.ctx.drawImage(self.images[0], 0, 0, self.cvs.width, self.cvs.height);
+                                    self.correntFrameNum = 0;
                                 }
-                                if (self.keyFrames[i].emit) {
-                                    if (self.keyFrames[i].emit <= index && !self.keyFrames[i].emited) {
-                                        self.keyFrames[i].callback(isReverse);
-                                        self.keyFrames[i].emited = true;
-                                    } else if (self.keyFrames[i].emit > index && self.keyFrames[i].emited) {
-                                        self.keyFrames[i].callback(isReverse);
-                                        self.keyFrames[i].emited = false;
+
+                                // keyFrameの処理
+                                for (let i = 0; i < self.keyFrames.length; i++) {
+                                    if (self.keyFrames[i].start != null) {
+                                        if (self.keyFrames[i].start <= self.correntFrameNum && self.correntFrameNum <= self.keyFrames[i].end) {
+                                            self.keyFrames[i].callback(self.getProgress(self.keyFrames[i].start, self.keyFrames[i].end));
+                                        }
+                                    }
+                                    if (self.keyFrames[i].emit) {
+                                        if (self.keyFrames[i].emit <= index && !self.keyFrames[i].emited) {
+                                            self.keyFrames[i].callback(isReverse);
+                                            self.keyFrames[i].emited = true;
+                                        } else if (self.keyFrames[i].emit > index && self.keyFrames[i].emited) {
+                                            self.keyFrames[i].callback(isReverse);
+                                            self.keyFrames[i].emited = false;
+                                        }
                                     }
                                 }
                             }
@@ -127,7 +130,7 @@
             self.isInited = true;
         },
         getImagePath: function (num) {
-            let imgnum = ('0000' + num).slice(-4);
+            let imgnum = ('00000' + num).slice(-5);
             return this.imgBasePath + imgnum + ".jpg";
         },
         getPriorityFrames: function () {
