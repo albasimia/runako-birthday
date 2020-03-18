@@ -87,7 +87,7 @@ ScrollAnimes.push(new ScrollAnime({
             }
         },
         {
-            emit: 85,
+            emit: 84,
             callback: function (isReverse) {
                 $('#animationArea-1 .credit').toggleClass('fadeIn');
             }
